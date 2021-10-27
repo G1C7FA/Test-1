@@ -7,17 +7,40 @@
     <title>Document</title>
     <!-- HTML -->
 
-    <meta property="og:url" content="https://code-study.tistory.com/">
-    <meta property="og:title" content="코드공부방">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="">
     <meta property="og:type" content="website">
     <meta property="og:image" content="">
     <meta property="og:description" content="공유기능 | 열심히 코드를 공부합시다.">
-    <meta property="og:file" content=""
+    <meta property="og:file" content="">
     <title>코드공부방</title>
     <!-- 이하 생략 -->
 
 </head>
 <body>
-    
+    <style>
+        #client-ip {
+          color: #ff80ab;
+        }
+      </style>
+      
+      <div>이 컴퓨터의 IP 주소: <span id="client-ip"></span></div>
+      
+      <script>
+        // HTML의 <script> 요소를 생성한다
+        const se = document.createElement('script');
+        // <script> 요소의 src 속성을 설정한다
+        se.src = 'https://ipinfo.io?callback=callback';
+        // <body> 요소의 하위 끝에 붙인다
+        // 그리고 콜백 함수를 호출한다
+        document.body.appendChild(se);
+        // 앞서 생성한 <script> 요소를 제거한다
+        document.body.removeChild(se);
+      
+        // 콜백 함수가 호출된다
+        function callback(data) {
+          document.getElementById('client-ip').textContent = data.ip;
+        }
+      </script>
 </body>
 </html>
